@@ -15,17 +15,30 @@ assessmentButton.addEventListener(
     }
     
     // 診断結果表示エリアの作成
-    resultDivison.innerText = '';
-    const header = document.createElement('h3');
-    header.innerText = '診断結果';
-    resultDivison.appendChild(header);
     
-    const paragraph = document.createElement('p');
+    // headerDivison の作成
+    const headerDivison = document.createElement('div');
+    headerDivison.setAttribute('class', 'card-header text-bg-danger');
+    headerDivison.innerText = '診断結果';
+
+    // bodyDivision の作成
+    const bodyDivision = document.createElement('div');
+    bodyDivision.setAttribute('class', 'card-body');
+
+    const paragraph = document.createElement('p')
+    paragraph.setAttribute('class', 'card-text');
     const result = assessment(userName);
     paragraph.innerText = result;
-    resultDivison.appendChild(paragraph);
+    bodyDivision.appendChild(paragraph);
 
-    // TODO ツイートエリアの作成
+    // resultDivision に Bootstrap のスタイルを適用する
+    resultDivison.setAttribute('class', 'card');
+
+    // headerDivision と bodyDivision を resultDivision に挿入する
+    resultDivison.appendChild(headerDivison);
+    resultDivison.appendChild(bodyDivision);
+
+    // ツイートエリアの作成
     tweetDivison.innerText = '';
     const anchor = document.createElement('a');
     const hrefValue = 
